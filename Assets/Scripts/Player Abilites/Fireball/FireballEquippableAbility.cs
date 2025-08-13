@@ -16,6 +16,7 @@ public class FireballEquippableAbility : EquippableAbility
             if (hit.collider.gameObject.GetComponent<Clickable>() || Input.GetKey(KeyCode.LeftShift)) // if hit is an enemy
             {
                 SpawnEqquipedAttack(hit.point);
+                AudioManager.instance.PlaySceneSwitchSwoosh();
                 player.Movement().StopMoving();
             }
             else
