@@ -10,12 +10,17 @@ public class CombatActor : MonoBehaviour
         damage = amount;
     }
 
+    public void SetFactionID(int newID)
+    {
+        factionID = newID;
+    }
+
     public virtual void HitReceiver(CombatReceiver target)
     {
         target.TakeDamage(damage);
     }
 
-    protected void OTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<CombatReceiver>() != null && !other.isTrigger)
         {

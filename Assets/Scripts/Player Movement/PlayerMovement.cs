@@ -12,10 +12,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            RunClickMovement();
-        }
     }
 
     void RunClickMovement()
@@ -30,5 +26,10 @@ public class PlayerMovement : MonoBehaviour
                 agent.destination = hit.point;
             }
         }
+    }
+
+    public void MoveToLocation(Vector3 location)
+    {
+        agent.destination = location;
     }
 }

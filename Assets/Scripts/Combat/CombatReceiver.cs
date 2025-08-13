@@ -8,7 +8,7 @@ public class CombatReceiver : Clickable
     protected bool alive = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected virtual void Start()
     {
         currentHP = maxHP;
     }
@@ -31,6 +31,7 @@ public class CombatReceiver : Clickable
     public virtual void TakeDamage(float amount)
     {
         if (!alive) return;
+
         currentHP -= amount;
         if (currentHP <= 0) Die();
     }
