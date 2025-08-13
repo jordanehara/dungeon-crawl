@@ -51,8 +51,7 @@ public class EquippableAbility : ClassSkill
             // in range, attack
             myPlayer.Movement().MoveToLocation(myPlayer.transform.position);
 
-            Vector3 lookPos = new Vector3(targetedReceiver.transform.position.x, targetedReceiver.transform.position.y, targetedReceiver.transform.position.z);
-            myPlayer.transform.LookAt(lookPos);
+            myPlayer.transform.LookAt(targetedReceiver.transform.position);
 
             SpawnEqquipedAttack(myPlayer.transform.position + myPlayer.transform.forward);
             myPlayer.GetAnimator().TriggerAttack();

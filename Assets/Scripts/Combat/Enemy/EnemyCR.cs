@@ -1,16 +1,10 @@
 using UnityEngine;
 
-public class EnemyCR : MonoBehaviour
+public class EnemyCR : CombatReceiver
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void Die()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Die();
+        GetComponent<BasicAI>().TriggerDeath();
     }
 }
