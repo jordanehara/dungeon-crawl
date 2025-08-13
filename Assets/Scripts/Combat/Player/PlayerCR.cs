@@ -8,6 +8,12 @@ public class PlayerCR : CombatReceiver
         SetFactionID(GetComponent<PlayerController>().GetFactionID());
     }
 
+    public override void TakeDamage(float amount)
+    {
+        base.TakeDamage(amount);
+        EventsManager.instance.onHealthChanged.Invoke(currentHP / maxHP);
+    }
+
     protected override void Die()
     {
         base.Die();
