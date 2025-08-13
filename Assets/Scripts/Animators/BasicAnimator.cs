@@ -10,4 +10,9 @@ public class BasicAnimator : MonoBehaviour
     {
         thisAnimator.SetBool("Walking", val);
     }
+
+    public virtual void TriggerAttack()
+    {
+        thisAnimator.SetTrigger("Attack"); // Triggers good for a just once action
+    }
 }
