@@ -15,4 +15,14 @@ public class BasicAnimator : MonoBehaviour
     {
         thisAnimator.SetTrigger("Attack"); // Triggers good for a just once action
     }
+
+    public virtual void TriggerDeath()
+    {
+        thisAnimator.SetTrigger("Die");
+    }
+
+    public virtual void TriggerRevive()
+    {
+        thisAnimator.SetTrigger("Revive");
+    }
 }
