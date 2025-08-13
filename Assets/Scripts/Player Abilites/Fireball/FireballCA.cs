@@ -24,6 +24,13 @@ public class FireballCA : CombatActor
 
     protected override void OnTriggerEnter(Collider other)
     {
-
+        if (other.GetComponent<CombatReceiver>() != null && !other.isTrigger)
+        {
+            if (other.GetComponent<CombatReceiver>().GetFactionID() != factionID)
+            {
+                HitReceiver(other.GetComponent<CombatReceiver>());
+                Destroy(gameObject);
+            }
+        }
     }
 }

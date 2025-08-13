@@ -9,7 +9,7 @@ public class EquippableAbility : ClassSkill
     protected CombatReceiver targetedReceiver;
     protected PlayerController myPlayer;
 
-    public void RunAbilityClicked(PlayerController player)
+    public virtual void RunAbilityClicked(PlayerController player)
     {
         myPlayer = player;
         targetedReceiver = null;
