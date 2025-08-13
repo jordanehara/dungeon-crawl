@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] EquippableAbility ability2;
 
     int factionID = 1;
+    bool alive = true;
+
     private void Start()
     {
         Camera.main.gameObject.AddComponent<CameraController>();
@@ -14,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!alive) return;
         if (Input.GetMouseButtonDown(0) && ability1 != null) UseAbility1();
         if (Input.GetMouseButtonDown(1) && ability2 != null) UseAbility2();
     }
@@ -46,5 +49,17 @@ public class PlayerController : MonoBehaviour
     public int GetFactionID()
     {
         return factionID;
+    }
+
+    public void TriggerDeath()
+    {
+        alive = false;
+        GetAnimator().TriggerDeath();
+    }
+
+    public void TriggerRevive()
+    {
+        alive = true;
+        GetAnimator().TriggerRevive();
     }
 }

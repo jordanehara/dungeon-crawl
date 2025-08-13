@@ -14,6 +14,15 @@ public class SkeletonAI : BasicAI
     [SerializeField] float maxPursuitDistance = 15f;
     [SerializeField] float attackRange = 1.75f;
 
+    // Attack state
+    [SerializeField] float damage = 3f;
+    [SerializeField] float attackCooldown = 2.5f;
+    float attackCooldownTimer = 0;
+    [SerializeField] GameObject attackPrefab;
+
+    // Death state
+    [SerializeField] float experienceValue = 10f;
+
     private void Start()
     {
         startPosition = transform.position;
@@ -109,12 +118,45 @@ public class SkeletonAI : BasicAI
     #region Attacking
     void TriggerAttacking()
     {
-
+        state = SkeletonState.Attacking;
+        agent.destination = transform.position;
     }
 
     void RunAttacking()
     {
+        attackCooldownTimer += Time.deltaTime;
 
+        if (attackCooldownTimer >= attackCooldown)
+        {
+            attackCooldownTimer -= attackCooldown;
+            SpawnAttackPrefab();
+            GetComponent<EnemyAnimator>().TriggerAttack();
+        }
+
+        if (DistanceToTarget() > attackRange)
+        {
+            TriggerPrursuing(target);
+        }
+    }
+
+    void SpawnAttackPrefab()
+    {
+        Vector3 attackDirection = target.transform.position - transform.position;
+        Vector3 spawnPosition = (attackDirection.normalized * attackRange) + transform.position;
+
+        GameObject newAttack = Instantiate(attackPrefab, spawnPosition, Quaternion.identity);
+        newAttack.GetComponent<CombatActor>().SetFactionID(factionID);
+        newAttack.GetComponent<CombatActor>().InitializeDamage(damage);
+    }
+    #endregion
+
+    #region Dead
+    public override void TriggerDeath()
+    {
+        state = SkeletonState.Dead;
+        base.TriggerDeath();
+
+        // Add experience
     }
     #endregion
 }
