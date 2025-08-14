@@ -6,7 +6,7 @@ public class EventsManager : MonoBehaviour
     public static EventsManager instance;
 
     public UnityEvent<float> onExperienceGranted;
-    public UnityEvent<float> onexperienceUpdated;
+    public UnityEvent<float> onExperienceUpdated;
     public UnityEvent<float> onHealthChanged;
     public UnityEvent<float> onManaChanged;
     public UnityEvent onPlayerDied;
