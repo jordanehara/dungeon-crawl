@@ -6,17 +6,17 @@ public class ManaGlobe : MonoBehaviour
 
     void Update()
     {
-        EventsManager.instance.onHealthChanged.AddListener(UpdateManaBar);
+        EventsManager.instance.onManaChanged.AddListener(UpdateManaBar);
     }
 
     private void OnDestroy()
     {
-        EventsManager.instance.onHealthChanged.RemoveListener(UpdateManaBar);
+        EventsManager.instance.onManaChanged.RemoveListener(UpdateManaBar);
     }
 
-    void UpdateManaBar(float newHPPercent)
+    void UpdateManaBar(float newManaPercent)
     {
-        newHPPercent = System.Math.Clamp(newHPPercent, 0, 1);
-        manaFill.transform.localScale = new Vector3(1, newHPPercent, 1);
+        newManaPercent = System.Math.Clamp(newManaPercent, 0, 1);
+        manaFill.transform.localScale = new Vector3(1, newManaPercent, 1);
     }
 }

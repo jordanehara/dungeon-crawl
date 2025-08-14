@@ -46,6 +46,11 @@ public class PlayerController : MonoBehaviour
         return GetComponent<PlayerCharacterSheet>();
     }
 
+    public PlayerCR CombatReceiver()
+    {
+        return GetComponent<PlayerCR>();
+    }
+
     public int GetFactionID()
     {
         return factionID;

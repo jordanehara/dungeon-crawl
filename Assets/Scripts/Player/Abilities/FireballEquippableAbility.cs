@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FireballEquippableAbility : EquippableAbility
 {
+    [SerializeField] float manaCost = 5;
     public override void RunAbilityClicked(PlayerController player)
     {
         myPlayer = player;
@@ -14,17 +15,23 @@ public class FireballEquippableAbility : EquippableAbility
         if (Physics.Raycast(ray, out hit))
         {
 
-            if (hit.collider.gameObject.GetComponent<Clickable>() || Input.GetKey(KeyCode.LeftShift)) // if hit is an enemy
+            if (CanCastFireball(ref hit)) // if hit is an enemy
             {
                 SpawnEqquipedAttack(hit.point);
                 AudioManager.instance.PlaySceneSwitchSwoosh();
-                player.Movement().StopMoving();
+                myPlayer.Movement().StopMoving();
+                myPlayer.CombatReceiver().SpendMana(manaCost);
             }
             else
             {
-                player.Movement().MoveToLocation(hit.point);
+                myPlayer.Movement().MoveToLocation(hit.point);
             }
         }
+    }
+
+    private bool CanCastFireball(ref RaycastHit hit)
+    {
+        return myPlayer.CombatReceiver().GetMana() >= manaCost && (hit.collider.gameObject.GetComponent<Clickable>() || Input.GetKey(KeyCode.LeftShift));
     }
 
     protected override void SpawnEqquipedAttack(Vector3 location)
