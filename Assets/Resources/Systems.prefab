@@ -2152,6 +2152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHUD: {fileID: 1031142495506648716}
+  characterStatsPanel: {fileID: 4685345502935767300}
 --- !u!1 &3967689147349941015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,7 +2796,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 536796281389653765}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 152533096870307329}
+        m_TargetAssemblyTypeName: CharacterStatPanel, Assembly-CSharp
+        m_MethodName: BuyEnergy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4685345502935767300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2807,13 +2820,14 @@ GameObject:
   - component: {fileID: 4159425815445866715}
   - component: {fileID: 4275015754051529658}
   - component: {fileID: 6144084715310947677}
+  - component: {fileID: 152533096870307329}
   m_Layer: 0
-  m_Name: Character Sheet Placeholder
+  m_Name: Character Sheet Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4159425815445866715
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2876,6 +2890,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &152533096870307329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4685345502935767300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4078ac531b0aa44daaeb81d44e4b217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strengthText: {fileID: 3902788746092358305}
+  dexterityText: {fileID: 3227226697948523367}
+  vitalityText: {fileID: 720540693367273967}
+  energyText: {fileID: 2450978583484509357}
+  spendButtons:
+  - {fileID: 6452110473140055388}
+  - {fileID: 8131058825269651403}
+  - {fileID: 8230273526616877326}
+  - {fileID: 4610588190326224487}
 --- !u!1 &4736289748539672813
 GameObject:
   m_ObjectHideFlags: 0
@@ -3995,7 +4030,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1396802508613097126}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 152533096870307329}
+        m_TargetAssemblyTypeName: CharacterStatPanel, Assembly-CSharp
+        m_MethodName: BuyStrength
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6747356784434159082
 GameObject:
   m_ObjectHideFlags: 0
@@ -4873,6 +4920,12 @@ MonoBehaviour:
   onPlayerLeveledUp:
     m_PersistentCalls:
       m_Calls: []
+  onStatPointSpent:
+    m_PersistentCalls:
+      m_Calls: []
+  onSkillPointSpent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8131058825269651403
 GameObject:
   m_ObjectHideFlags: 0
@@ -4993,7 +5046,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3125793914738239588}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 152533096870307329}
+        m_TargetAssemblyTypeName: CharacterStatPanel, Assembly-CSharp
+        m_MethodName: BuyDexterity
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8230273526616877326
 GameObject:
   m_ObjectHideFlags: 0
@@ -5114,4 +5179,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2428228542389938691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 152533096870307329}
+        m_TargetAssemblyTypeName: CharacterStatPanel, Assembly-CSharp
+        m_MethodName: BuyVitality
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

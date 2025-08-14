@@ -157,6 +157,7 @@ public class SkeletonAI : BasicAI
         base.TriggerDeath();
 
         // Add experience
+        EventsManager.instance.onExperienceGranted.Invoke(experienceValue);
     }
     #endregion
 }

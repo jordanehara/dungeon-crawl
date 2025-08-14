@@ -12,6 +12,8 @@ public class EventsManager : MonoBehaviour
     public UnityEvent onPlayerDied;
     public UnityEvent onPlayerRevived;
     public UnityEvent onPlayerLeveledUp;
+    public UnityEvent onStatPointSpent;
+    public UnityEvent onSkillPointSpent;
 
     void Awake()
     {
