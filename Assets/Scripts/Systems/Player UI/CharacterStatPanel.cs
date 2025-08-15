@@ -16,6 +16,7 @@ public class CharacterStatPanel : MonoBehaviour
         EventsManager.instance.onStatPointSpent.AddListener(UpdateCharacterSheetPanel);
         EventsManager.instance.onPlayerLeveledUp.AddListener(UpdateCharacterSheetPanel);
         UpdateCharacterSheetPanel();
+        UIManager.instance.HideCharacterStatsPanel();
     }
 
     void OnDestroy()
@@ -92,4 +93,9 @@ public class CharacterStatPanel : MonoBehaviour
         PlayerCharacterSheet.instance.BuyEnergyPoint();
     }
     #endregion
+
+    public void HideCharacterStatPanel()
+    {
+        UIManager.instance.HideCharacterStatsPanel();
+    }
 }
