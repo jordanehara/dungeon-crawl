@@ -11,6 +11,8 @@ public class EquippableAbility : ClassSkill
 
     public virtual void RunAbilityClicked(PlayerController player)
     {
+        if (MouseIsOverUI()) return;
+
         myPlayer = player;
         targetedReceiver = null;
 
@@ -20,12 +22,17 @@ public class EquippableAbility : ClassSkill
 
         if (Physics.Raycast(ray, out hit))
         {
-            player.Movement().MoveToLocation(hit.point);
+            SuccessfulRaycastFunctionality(player, hit);
+        }
+    }
 
-            if (hit.collider.gameObject.GetComponent<Clickable>()) // if hit is an enemy
-            {
-                targetedReceiver = hit.collider.GetComponent<CombatReceiver>();
-            }
+    protected virtual void SuccessfulRaycastFunctionality(PlayerController player, RaycastHit hit)
+    {
+        player.Movement().MoveToLocation(hit.point);
+
+        if (hit.collider.gameObject.GetComponent<Clickable>()) // if hit is an enemy
+        {
+            targetedReceiver = hit.collider.GetComponent<CombatReceiver>();
         }
     }
 
@@ -33,6 +40,16 @@ public class EquippableAbility : ClassSkill
     {
         GameObject newAttack = Instantiate(spawnablePrefab, location, Quaternion.identity);
         newAttack.GetComponent<CombatActor>().SetFactionID(myPlayer.GetFactionID());
+
+        float critMod = 1;
+        int random = Random.Range(0, 100);
+        float playerDex = PlayerCharacterSheet.instance.GetDexterity();
+        if (random < playerDex) critMod = 2;
+
+        float playerStrength = PlayerCharacterSheet.instance.GetStrength();
+        float calculatedDamage = playerStrength / 5 * critMod;
+
+        newAttack.GetComponent<CombatActor>().InitializeDamage(calculatedDamage);
     }
 
     public virtual void CancelAbility()
@@ -63,5 +80,10 @@ public class EquippableAbility : ClassSkill
             // chase target
             myPlayer.Movement().MoveToLocation(targetedReceiver.transform.position);
         }
+    }
+
+    public bool MouseIsOverUI()
+    {
+        return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
     }
 }

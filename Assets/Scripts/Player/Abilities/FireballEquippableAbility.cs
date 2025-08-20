@@ -3,29 +3,19 @@ using UnityEngine;
 public class FireballEquippableAbility : EquippableAbility
 {
     [SerializeField] float manaCost = 5;
-    public override void RunAbilityClicked(PlayerController player)
+
+    protected override void SuccessfulRaycastFunctionality(PlayerController player, RaycastHit hit)
     {
-        myPlayer = player;
-        targetedReceiver = null;
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        Physics.queriesHitTriggers = false;
-
-        if (Physics.Raycast(ray, out hit))
+        if (CanCastFireball(ref hit)) // if hit is an enemy
         {
-
-            if (CanCastFireball(ref hit)) // if hit is an enemy
-            {
-                SpawnEqquipedAttack(hit.point);
-                AudioManager.instance.PlaySceneSwitchSwoosh();
-                myPlayer.Movement().StopMoving();
-                myPlayer.CombatReceiver().SpendMana(manaCost);
-            }
-            else
-            {
-                myPlayer.Movement().MoveToLocation(hit.point);
-            }
+            SpawnEqquipedAttack(hit.point);
+            AudioManager.instance.PlaySceneSwitchSwoosh();
+            myPlayer.Movement().StopMoving();
+            myPlayer.CombatReceiver().SpendMana(manaCost);
+        }
+        else
+        {
+            myPlayer.Movement().MoveToLocation(hit.point);
         }
     }
 
