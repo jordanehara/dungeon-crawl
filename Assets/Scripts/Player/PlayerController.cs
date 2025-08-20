@@ -2,8 +2,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+    [SerializeField] ClassSkillManager skillManager;
     [SerializeField] EquippableAbility ability1;
     [SerializeField] EquippableAbility ability2;
+
+    void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
 
     int factionID = 1;
     bool alive = true;
@@ -21,6 +29,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && ability2 != null) UseAbility2();
     }
 
+    #region Abilities
     void UseAbility1()
     {
         ability1.RunAbilityClicked(this);
@@ -30,6 +39,16 @@ public class PlayerController : MonoBehaviour
     {
         ability2.RunAbilityClicked(this);
     }
+    public void SetAbility2(EquippableAbility newAbility)
+    {
+        ability2 = newAbility;
+        EventsManager.instance.onNewAbility2Equipped.Invoke(ability2);
+    }
+    public EquippableAbility GetAbility2()
+    {
+        return ability2;
+    }
+    #endregion
 
     public PlayerMovement Movement()
     {
@@ -49,6 +68,11 @@ public class PlayerController : MonoBehaviour
     public PlayerCR CombatReceiver()
     {
         return GetComponent<PlayerCR>();
+    }
+
+    public ClassSkillManager SkillManager()
+    {
+        return skillManager;
     }
 
     public int GetFactionID()

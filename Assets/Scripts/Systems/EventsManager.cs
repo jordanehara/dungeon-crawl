@@ -14,6 +14,7 @@ public class EventsManager : MonoBehaviour
     public UnityEvent onPlayerLeveledUp;
     public UnityEvent onStatPointSpent;
     public UnityEvent onSkillPointSpent;
+    public UnityEvent<ClassSkill> onNewAbility2Equipped; // swap to new ability
 
     void Awake()
     {
