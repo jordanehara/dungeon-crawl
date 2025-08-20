@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -76,7 +77,7 @@ public class DialogManager : MonoBehaviour
             return;
         }
         dialogBox.SetActive(true);
-        dialogBodyText.text = npcName;
+        dialogNameText.text = npcName;
         dialogProgressionCount = 0;
 
         savedDialogData = dialogData;
@@ -101,6 +102,7 @@ public class DialogManager : MonoBehaviour
     #endregion
 }
 
+[Serializable]
 public class DialogData
 {
     public string dialogText = "";
