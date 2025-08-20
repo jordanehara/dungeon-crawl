@@ -5,6 +5,14 @@ public class PlayerCR : CombatReceiver
     protected float currentMana = 35;
     [SerializeField] protected float maxMana = 35;
 
+    // Regen
+    protected float healthRegenBase = 0.5f;
+    protected float healthRegenMod = 1;
+    protected float manaRegenBase = 0.5f;
+    protected float manaRegenMod = 1;
+    protected float regenUpdateTickTimer = 0;
+    protected float regenUpdateTickTime = 2;
+
     protected override void Start()
     {
         base.Start();
@@ -32,6 +40,11 @@ public class PlayerCR : CombatReceiver
         GetComponent<PlayerController>().TriggerDeath();
     }
 
+    protected void Update()
+    {
+        RunRegen();
+    }
+
     #region Mana management
     public float GetMana()
     {
@@ -57,6 +70,8 @@ public class PlayerCR : CombatReceiver
 
     void StatsChangedAdjustment()
     {
+        UpdatebaseRegen();
+
         float oldMaxHP = maxHP;
         float oldMaxMana = maxMana;
 
@@ -68,6 +83,41 @@ public class PlayerCR : CombatReceiver
 
         EventsManager.instance.onManaChanged.Invoke(currentMana / maxMana);
         EventsManager.instance.onHealthChanged.Invoke(currentHP / maxHP);
+    }
+    #endregion
+
+    #region Regen
+    protected void RunRegen()
+    {
+        currentHP += Time.deltaTime * healthRegenBase * healthRegenMod;
+        if (currentHP > maxHP) currentHP = maxHP;
+
+        currentMana += Time.deltaTime * manaRegenBase * manaRegenMod;
+        if (currentMana > maxMana) currentMana = maxMana;
+
+        regenUpdateTickTimer += Time.deltaTime;
+        if (regenUpdateTickTimer >= regenUpdateTickTime)
+        {
+            regenUpdateTickTimer -= regenUpdateTickTime;
+            EventsManager.instance.onHealthChanged.Invoke(currentHP / maxHP);
+            EventsManager.instance.onManaChanged.Invoke(currentMana / maxMana);
+        }
+    }
+
+    public void SetHPRegenMod(float newMod)
+    {
+        healthRegenMod = newMod;
+    }
+
+    public void SetManaRegenMod(float newMod)
+    {
+        manaRegenMod = newMod;
+    }
+
+    protected void UpdatebaseRegen()
+    {
+        healthRegenBase = 0.5f + 0.01f * PlayerCharacterSheet.instance.GetVitality();
+        manaRegenBase = 0.5f + 0.01f * PlayerCharacterSheet.instance.GetEnergy();
     }
     #endregion
 }
