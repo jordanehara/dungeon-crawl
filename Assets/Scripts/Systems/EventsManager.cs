@@ -15,6 +15,8 @@ public class EventsManager : MonoBehaviour
     public UnityEvent onStatPointSpent;
     public UnityEvent onSkillPointSpent;
     public UnityEvent<ClassSkill> onNewAbility2Equipped; // swap to new ability
+    public UnityEvent onDialogStarted;
+    public UnityEvent onDialogEnded;
 
     void Awake()
     {
