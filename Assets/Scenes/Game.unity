@@ -252,6 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 82606032}
+  - component: {fileID: 82606033}
   m_Layer: 0
   m_Name: Class Skill Manager
   m_TagString: Untagged
@@ -276,6 +277,22 @@ Transform:
   - {fileID: 226629057}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &82606033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82606031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47e68e9375c33746a57a6e4b64bc699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicMelee: {fileID: 381611327}
+  skillTree:
+    list:
+    - {fileID: 226629058}
 --- !u!1 &184373051
 GameObject:
   m_ObjectHideFlags: 0
