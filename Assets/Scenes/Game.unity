@@ -487,9 +487,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillLevel: 0
-  skillName: 
+  skillName: Fireball
   description: 
-  iconSprite: {fileID: 0}
+  iconSprite: {fileID: 21300000, guid: 2d089513ae4adfc48a683c362ad9992c, type: 3}
   spawnablePrefab: {fileID: 2554123344829366496, guid: 4f7bc969ef456b54b8009631f5eec4af, type: 3}
   attackRange: 1.5
   manaCost: 5
@@ -1658,6 +1658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939a09396fabeb442b4a8a92af9900fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillManager: {fileID: 82606033}
   ability1: {fileID: 381611327}
   ability2: {fileID: 226629058}
 --- !u!114 &671625883

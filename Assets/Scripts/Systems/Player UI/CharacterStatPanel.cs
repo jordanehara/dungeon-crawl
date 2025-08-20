@@ -17,6 +17,7 @@ public class CharacterStatPanel : MonoBehaviour
         EventsManager.instance.onPlayerLeveledUp.AddListener(UpdateCharacterSheetPanel);
         UpdateCharacterSheetPanel();
         UIManager.instance.HideCharacterStatsPanel();
+        UIManager.instance.HideSkillTreePanel();
     }
 
     void OnDestroy()

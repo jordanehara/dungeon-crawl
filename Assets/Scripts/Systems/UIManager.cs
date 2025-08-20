@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
         // List of things to hide
         HidePlayerHUD();
         HideCharacterStatsPanel();
-        HideSkillTree();
+        HideSkillTreePanel();
     }
 
     #region Player HUD
@@ -57,14 +57,14 @@ public class UIManager : MonoBehaviour
         skillTreePanel.SetActive(true);
     }
 
-    public void HideSkillTree()
+    public void HideSkillTreePanel()
     {
         skillTreePanel.SetActive(false);
     }
 
-    public void ToggleSkillTree()
+    public void ToggleSkillTreePanel()
     {
-        if (skillTreePanel.activeInHierarchy) HideSkillTree();
+        if (skillTreePanel.activeInHierarchy) HideSkillTreePanel();
         else ShowSkillTree();
     }
     #endregion

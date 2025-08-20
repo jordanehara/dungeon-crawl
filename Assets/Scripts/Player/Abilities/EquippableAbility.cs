@@ -86,4 +86,12 @@ public class EquippableAbility : ClassSkill
     {
         return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
     }
+
+    public override void LevelUp()
+    {
+        if (PlayerCharacterSheet.instance.SkillPointSpendSuccessful())
+        {
+            skillLevel++;
+        }
+    }
 }

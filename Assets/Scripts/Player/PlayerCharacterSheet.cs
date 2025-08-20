@@ -154,4 +154,13 @@ public class PlayerCharacterSheet : MonoBehaviour
     }
 
     #endregion
+
+    #region Skill POint Spend
+    public bool SkillPointSpendSuccessful()
+    {
+        if (skillPointsToSpend <= 0) return false;
+        skillPointsToSpend--;
+        return true;
+    }
+    #endregion
 }

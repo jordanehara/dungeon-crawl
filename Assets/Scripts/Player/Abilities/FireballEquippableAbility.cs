@@ -34,5 +34,8 @@ public class FireballEquippableAbility : EquippableAbility
         GameObject newAttack = Instantiate(spawnablePrefab, spawnPosition, Quaternion.identity);
         newAttack.GetComponent<FireballCA>().SetFactionID(myPlayer.GetFactionID());
         newAttack.GetComponent<FireballCA>().SetShootDirection(myPlayer.transform.forward);
+
+        float calculatedDamage = 1 + 2 * skillLevel;
+        newAttack.GetComponent<FireballCA>().InitializeDamage(calculatedDamage);
     }
 }
