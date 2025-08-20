@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject playerHUD;
     [SerializeField] GameObject characterStatsPanel;
+    [SerializeField] GameObject skillTreePanel;
 
     void Awake()
     {
@@ -17,6 +18,7 @@ public class UIManager : MonoBehaviour
         // List of things to hide
         HidePlayerHUD();
         HideCharacterStatsPanel();
+        HideSkillTree();
     }
 
     #region Player HUD
@@ -46,6 +48,24 @@ public class UIManager : MonoBehaviour
     {
         if (characterStatsPanel.activeInHierarchy) HideCharacterStatsPanel();
         else ShowCharacterStatsPanel();
+    }
+    #endregion
+
+    #region Skill Tree
+    public void ShowSkillTree()
+    {
+        skillTreePanel.SetActive(true);
+    }
+
+    public void HideSkillTree()
+    {
+        skillTreePanel.SetActive(false);
+    }
+
+    public void ToggleSkillTree()
+    {
+        if (skillTreePanel.activeInHierarchy) HideSkillTree();
+        else ShowSkillTree();
     }
     #endregion
 }
