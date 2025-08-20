@@ -98,11 +98,11 @@ public class PlayerCharacterSheet : MonoBehaviour
     #region Derivative Stats
     public float GetMaxHP()
     {
-        return maxHitPoints;
+        return 5 + 2 * vitality;
     }
     public float GetMaxMana()
     {
-        return maxMana;
+        return 5 + 2 * energy;
     }
     #endregion
 
