@@ -28,7 +28,7 @@ public class CharacterStatPanel : MonoBehaviour
 
     void OnEnable()
     {
-        UpdateCharacterSheetPanel();
+        if (PlayerCharacterSheet.instance != null) UpdateCharacterSheetPanel();
     }
 
     void UpdateCharacterSheetPanel()
