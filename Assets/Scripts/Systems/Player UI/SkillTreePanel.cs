@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        skillTree = PlayerController.instance.SkillManager().GetSkillTree();
+        if (PlayerController.instance != null) skillTree = PlayerController.instance.SkillManager().GetSkillTree();
         EventsManager.instance.onSkillPointSpent.AddListener(UpdateSkillTree);
     }
 
@@ -21,6 +21,14 @@ public class Character : MonoBehaviour
     void OnEnable()
     {
         if (skillTree != null) UpdateSkillTree();
+        else
+        {
+            if (PlayerController.instance != null)
+            {
+                skillTree = PlayerController.instance.SkillManager().GetSkillTree();
+                UpdateSkillTree();
+            }
+        }
     }
 
     void UpdateSkillTree()
@@ -51,6 +59,6 @@ public class Character : MonoBehaviour
 
     public void HideSkillTreePanel()
     {
-        UIManager.instance.HideSkillTreePanel();
+        if (UIManager.instance != null) UIManager.instance.HideSkillTreePanel();
     }
 }
