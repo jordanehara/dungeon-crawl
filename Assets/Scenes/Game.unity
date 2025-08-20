@@ -275,6 +275,8 @@ Transform:
   m_Children:
   - {fileID: 381611326}
   - {fileID: 226629057}
+  - {fileID: 1087947162}
+  - {fileID: 1208295281}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &82606033
@@ -293,6 +295,10 @@ MonoBehaviour:
   skillTree:
     list:
     - {fileID: 226629058}
+    - {fileID: 1087947163}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 1208295282}
 --- !u!1 &184373051
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,6 +2138,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1650213759}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1087947161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1087947162}
+  - component: {fileID: 1087947163}
+  m_Layer: 0
+  m_Name: Multiball Equippable Ability
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1087947162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087947161}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 82606032}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1087947163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087947161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0253fb0824bc3eb47a719ae42e2438c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillLevel: 0
+  skillName: Multiball
+  description: 
+  iconSprite: {fileID: 21300000, guid: 7092324b93851a14c858530cca4a6b26, type: 3}
+  spawnablePrefab: {fileID: 2554123344829366496, guid: 4f7bc969ef456b54b8009631f5eec4af, type: 3}
+  attackRange: 1.5
+  manaCost: 17
 --- !u!95 &1121891283 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2829917917779058644, guid: 4c67ed6c086451b4db54ac4d24b626bb, type: 3}
@@ -2203,6 +2260,54 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c67ed6c086451b4db54ac4d24b626bb, type: 3}
+--- !u!1 &1208295280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1208295281}
+  - component: {fileID: 1208295282}
+  m_Layer: 0
+  m_Name: Mental Fortitude Passive Ability
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1208295281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208295280}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 82606032}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1208295282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208295280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc2b6d4ff61b044aaeda033814fb645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillLevel: 0
+  skillName: Mental Fortitude
+  description: 
+  iconSprite: {fileID: 21300000, guid: 8a5f9829a049c704fa992203bfc451f2, type: 3}
 --- !u!95 &1245416038 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4540229000190281644, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
