@@ -26,18 +26,15 @@ public class SceneChanger : MonoBehaviour
     public void LoadHowToPlayScene()
     {
         SceneManager.LoadScene(howToPlaySceneName);
-
     }
 
     public void LoadCreditsScene()
     {
         SceneManager.LoadScene(creditsSceneName);
-
     }
 
     public void LoadGameScene()
     {
         SceneManager.LoadScene(gameSceneName);
-
     }
 }
