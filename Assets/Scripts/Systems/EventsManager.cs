@@ -18,6 +18,10 @@ public class EventsManager : MonoBehaviour
     public UnityEvent onDialogStarted;
     public UnityEvent onDialogEnded;
 
+    public UnityEvent onQuestStatusChanged;
+    public UnityEvent onSpawnLevel1;
+    public UnityEvent onSpawnLevel2;
+
     void Awake()
     {
         if (instance == null) instance = this;
