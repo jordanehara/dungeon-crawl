@@ -159,11 +159,23 @@ public class ChildrenAI : BasicAI
     public override void TriggerDeath()
     {
         state = ChildrenState.Dead;
-        base.TriggerDeath();
 
         // Add experience
         EventsManager.instance.onExperienceGranted.Invoke(experienceValue);
         GetComponent<ChattableEnemy>().enabled = true;
+
+        if (!alive) return;
+        alive = false;
+
+        if (GetComponent<EnemyAnimator>() != null)
+        {
+            GetComponent<EnemyAnimator>().TriggerDeath();
+        }
+
+        GetComponent<SphereCollider>().enabled = false;
+
+        agent.enabled = false; // stop moving
+        EventsManager.instance.onBossBeat.Invoke();
     }
     #endregion
 }

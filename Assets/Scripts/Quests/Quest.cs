@@ -26,6 +26,7 @@ public class Quest
     public virtual void ProgressToNextStep()
     {
         currentQuestStep++;
+        Debug.Log("quest step " + currentQuestStep);
         EventsManager.instance.onQuestStatusChanged.Invoke();
     }
 }

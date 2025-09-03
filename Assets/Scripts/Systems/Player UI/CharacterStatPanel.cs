@@ -34,10 +34,13 @@ public class CharacterStatPanel : MonoBehaviour
 
     void UpdateCharacterSheetPanel()
     {
-        if (PlayerCharacterSheet.instance.GetStatPointsToSpend() == 0) HideSpendButtons();
-        else ShowSpendButtons();
+        if (PlayerCharacterSheet.instance != null)
+        {
+            if (PlayerCharacterSheet.instance.GetStatPointsToSpend() == 0) HideSpendButtons();
+            else ShowSpendButtons();
 
-        UpdateStatdisplayText();
+            UpdateStatdisplayText();
+        }
     }
 
     void UpdateStatdisplayText()

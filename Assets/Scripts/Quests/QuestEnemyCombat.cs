@@ -7,7 +7,12 @@ public class QuestEnemyCombat : EnemyCR
     protected override void Die()
     {
         base.Die();
-        if (questStep.QuestIsOnThisStep()) questStep.ProgressQuest();
+        LevelManager.instance.defeatedEnemies++;
+        if (questStep.QuestIsOnThisStep() && LevelManager.instance.defeatedEnemies == 13)
+        {
+            questStep.ProgressQuest();
+            EventsManager.instance.onSpawnLevel2.Invoke();
+        }
     }
 
 }

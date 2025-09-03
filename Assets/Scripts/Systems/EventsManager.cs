@@ -21,6 +21,7 @@ public class EventsManager : MonoBehaviour
     public UnityEvent onQuestStatusChanged;
     public UnityEvent onSpawnLevel1;
     public UnityEvent onSpawnLevel2;
+    public UnityEvent onBossBeat;
 
     void Awake()
     {
