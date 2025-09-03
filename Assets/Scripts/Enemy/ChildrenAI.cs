@@ -3,7 +3,7 @@ using UnityEngine;
 public class ChildrenAI : BasicAI
 {
     enum ChildrenState { Wandering, Pursuing, Attacking, Dead, Idle };
-    ChildrenState state = ChildrenState.Wandering;
+    ChildrenState state;
 
     // Wandering state
     [SerializeField] float maxWanderingDistance = 6f;
@@ -27,6 +27,7 @@ public class ChildrenAI : BasicAI
     {
         startPosition = transform.position;
         GetNewWanderDestination();
+        attackCooldownTimer = attackCooldown;
     }
 
     protected override void RunAI()
@@ -143,23 +144,6 @@ public class ChildrenAI : BasicAI
         }
     }
 
-    void RunAttacking2()
-    {
-        attackCooldownTimer += Time.deltaTime;
-
-        if (attackCooldownTimer >= attackCooldown)
-        {
-            attackCooldownTimer -= attackCooldown;
-            SpawnAttackPrefab();
-            GetComponent<EnemyAnimator>().TriggerAttack2();
-        }
-
-        if (DistanceToTarget() > attackRange)
-        {
-            TriggerPrursuing(target);
-        }
-    }
-
     void SpawnAttackPrefab()
     {
         Vector3 attackDirection = target.transform.position - transform.position;
@@ -179,6 +163,7 @@ public class ChildrenAI : BasicAI
 
         // Add experience
         EventsManager.instance.onExperienceGranted.Invoke(experienceValue);
+        GetComponent<ChattableEnemy>().enabled = true;
     }
     #endregion
 }

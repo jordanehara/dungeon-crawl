@@ -36,7 +36,6 @@ public class FireballEquippableAbility : EquippableAbility
         newAttack.GetComponent<FireballCA>().SetShootDirection(myPlayer.transform.forward);
 
         float calculatedDamage = 1 + 2 * skillLevel;
-        Debug.Log(calculatedDamage);
         newAttack.GetComponent<FireballCA>().InitializeDamage(calculatedDamage);
     }
 }

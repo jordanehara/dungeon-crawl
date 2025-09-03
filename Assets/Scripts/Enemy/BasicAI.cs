@@ -39,11 +39,8 @@ public class BasicAI : MonoBehaviour
             GetComponent<EnemyAnimator>().TriggerDeath();
         }
 
-        Collider[] attachedColliders = GetComponents<Collider>();
-        foreach (Collider collider in attachedColliders)
-        {
-            collider.enabled = false;
-        }
+        SphereCollider attachedColliders = GetComponent<SphereCollider>();
+        attachedColliders.enabled = false;
 
         agent.enabled = false; // stop moving
     }
