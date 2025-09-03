@@ -32,12 +32,12 @@ namespace SciFiArsenal
 
             if (muzzleParticle)
             {
-				muzzleParticle = Instantiate(muzzleParticle, myTransform.position, Quaternion.LookRotation(-myTransform.forward)) as GameObject;
+                muzzleParticle = Instantiate(muzzleParticle, myTransform.position, Quaternion.LookRotation(-myTransform.forward)) as GameObject;
 
                 Destroy(muzzleParticle, 1.5f); // Lifetime of muzzle effect.
             }
         }
-		
+
         void FixedUpdate()
         {
             if (destroyed)
@@ -61,28 +61,17 @@ namespace SciFiArsenal
             if (Physics.SphereCast(myTransform.position, rad, dir, out hit, dist))
             {
                 myTransform.position = hit.point + (hit.normal * collideOffset);
+                GameObject impactP = Instantiate(impactParticle, myTransform.position, Quaternion.FromToRotation(Vector3.forward, hit.normal)) as GameObject;
 
-                GameObject impactP = Instantiate(impactParticle, myTransform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject;
-
-                if (hit.transform.tag == "Target") // Projectile will affect objects tagged as Target
-{
-					SciFiTarget SciFiTarget = hit.transform.GetComponent<SciFiTarget>();
-					if (SciFiTarget != null)
-					{
-						SciFiTarget.OnHit();
-					}
-				}
-
-
-                foreach (GameObject trail in trailParticles)
-                {
-                    GameObject curTrail = myTransform.Find(projectileParticle.name + "/" + trail.name).gameObject;
-                    curTrail.transform.parent = null;
-                    Destroy(curTrail, 3f);
-                }
+                // foreach (GameObject trail in trailParticles)
+                // {
+                //     GameObject curTrail = myTransform.Find(projectileParticle.name + "/" + trail.name).gameObject;
+                //     curTrail.transform.parent = null;
+                //     Destroy(curTrail, 3f);
+                // }
                 Destroy(projectileParticle, 3f);
                 Destroy(impactP, 5.0f);
-                DestroyMissile();
+                // DestroyMissile();
             }
             else
             {
@@ -96,19 +85,19 @@ namespace SciFiArsenal
                 }
             }
 
-            RotateTowardsDirection();
+            // RotateTowardsDirection();
         }
 
         private void DestroyMissile()
         {
             destroyed = true;
 
-            foreach (GameObject trail in trailParticles)
-            {
-                GameObject curTrail = myTransform.Find(projectileParticle.name + "/" + trail.name).gameObject;
-                curTrail.transform.parent = null;
-                Destroy(curTrail, 3f);
-            }
+            // foreach (GameObject trail in trailParticles)
+            // {
+            //     GameObject curTrail = myTransform.Find(projectileParticle.name + "/" + trail.name).gameObject;
+            //     curTrail.transform.parent = null;
+            //     Destroy(curTrail, 3f);
+            // }
             Destroy(projectileParticle, 3f);
             Destroy(gameObject);
 

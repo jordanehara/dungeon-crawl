@@ -5,9 +5,16 @@ public class EquippableAbility : ClassSkill
 {
     [SerializeField] protected GameObject spawnablePrefab;
     [SerializeField] protected float attackRange = 1.5f;
+    [SerializeField] float attackCooldown = 2.5f;
+    float attackCooldownTimer = 0;
 
     protected CombatReceiver targetedReceiver;
     protected PlayerController myPlayer;
+
+    void Awake()
+    {
+        attackCooldownTimer = attackCooldown;
+    }
 
     public virtual void RunAbilityClicked(PlayerController player)
     {
@@ -60,6 +67,7 @@ public class EquippableAbility : ClassSkill
     protected virtual void Update()
     {
         if (targetedReceiver != null) RunTargetAttack();
+        attackCooldownTimer += Time.deltaTime;
     }
 
     protected virtual void RunTargetAttack()
@@ -68,12 +76,19 @@ public class EquippableAbility : ClassSkill
         {
             // in range, attack
             myPlayer.Movement().MoveToLocation(myPlayer.transform.position);
-
             myPlayer.transform.LookAt(targetedReceiver.transform.position);
 
-            SpawnEqquipedAttack(myPlayer.transform.position + myPlayer.transform.forward);
-            myPlayer.GetAnimator().TriggerAttack();
-            targetedReceiver = null;
+            if (attackCooldownTimer >= attackCooldown)
+            {
+                attackCooldownTimer -= attackCooldown;
+                SpawnEqquipedAttack(myPlayer.transform.position + myPlayer.transform.forward);
+                myPlayer.GetAnimator().TriggerAttack();
+                targetedReceiver = null;
+            }
+            else
+            {
+                myPlayer.GetAnimator().TriggerIdle();
+            }
         }
         else
         {

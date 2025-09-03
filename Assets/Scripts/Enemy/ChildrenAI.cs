@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ChildrenAI : BasicAI
 {
-    enum ChildrenState { Wandering, Pursuing, Attacking, Dead };
+    enum ChildrenState { Wandering, Pursuing, Attacking, Dead, Idle };
     ChildrenState state = ChildrenState.Wandering;
 
     // Wandering state
@@ -130,7 +130,28 @@ public class ChildrenAI : BasicAI
         {
             attackCooldownTimer -= attackCooldown;
             SpawnAttackPrefab();
-            GetComponent<EnemyAnimator>().TriggerAttack();
+            int attackType = Random.Range(0, 2);
+            if (attackType == 0)
+                GetComponent<EnemyAnimator>().TriggerAttack();
+            else
+                GetComponent<EnemyAnimator>().TriggerAttack2();
+        }
+
+        if (DistanceToTarget() > attackRange)
+        {
+            TriggerPrursuing(target);
+        }
+    }
+
+    void RunAttacking2()
+    {
+        attackCooldownTimer += Time.deltaTime;
+
+        if (attackCooldownTimer >= attackCooldown)
+        {
+            attackCooldownTimer -= attackCooldown;
+            SpawnAttackPrefab();
+            GetComponent<EnemyAnimator>().TriggerAttack2();
         }
 
         if (DistanceToTarget() > attackRange)

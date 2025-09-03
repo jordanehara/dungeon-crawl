@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ClassSkillManager skillManager;
     [SerializeField] EquippableAbility ability1;
     [SerializeField] EquippableAbility ability2;
+    [SerializeField] float attackCooldown = 2.5f;
+    float attackCooldownTimer = 0;
 
     int factionID = 1;
     bool alive = true;

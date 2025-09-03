@@ -584,7 +584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984c85bcb932ab4439dca6f91ba3b6fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smallEffect: {fileID: 3941271995951717194, guid: 05039694b74b73e42951288c6a6e943f, type: 3}
+  smallEffect: {fileID: 169654, guid: 1dadf691cda82fa44a8a66d7dd374612, type: 3}
   bigEffect: {fileID: 0}
 --- !u!1 &1216358425224087648
 GameObject:
